@@ -1,0 +1,472 @@
+:root {
+    --primary-red: #e91e63;
+    --deep-crimson: #c2185b;
+    --soft-pink: #f8bbd0;
+    --accent-gold: #d4af37;
+    --text-dark: #4a235a;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --card-shadow: 0 15px 35px rgba(233, 30, 99, 0.15), 0 5px 15px rgba(0,0,0,0.05);
+    --glow-shadow: 0 0 25px rgba(233, 30, 99, 0.4);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    /* Richer, multi-layered gradient background */
+    background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 50%, #c94b4b 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* Animated Bokeh Background Effect */
+.bokeh-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(rgba(255, 255, 255, 0.2) 2px, transparent 2px);
+    background-size: 50px 50px, 100px 100px;
+    background-position: 0 0, 50px 50px;
+    z-index: -2;
+    animation: bokehMove 60s linear infinite;
+}
+@keyframes bokehMove { from { background-position: 0 0, 50px 50px; } to { background-position: 1000px 500px, 1050px 550px; } }
+
+/* Custom Cursor */
+#cursor-heart {
+    position: fixed; font-size: 28px; pointer-events: none; z-index: 99999;
+    transform: translate(-50%, -50%); filter: drop-shadow(0 0 5px var(--primary-red));
+}
+
+/* Reusable Styles */
+.glow {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 2px solid var(--glass-border);
+    border-radius: 30px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.4s ease;
+}
+
+.glow-hover {
+    @extend .glow;
+    cursor: pointer;
+}
+.glow-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--glow-shadow), var(--card-shadow);
+    border-color: var(--soft-pink);
+}
+
+.section-title {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    font-size: 4.5rem;
+    color: var(--deep-crimson);
+    margin: 4rem 0 1rem;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+}
+
+.subtitle { text-align: center; color: var(--text-dark); margin-bottom: 2rem; font-size: 1.1rem; }
+
+/* --- LAYOUT & SECTIONS --- */
+.main-page-wrapper { max-width: 1000px; margin: 0 auto; padding: 2rem; position: relative; z-index: 5; }
+
+/* Top Nav */
+.top-nav { position: fixed; top: 20px; right: 20px; z-index: 100; }
+.music-control { padding: 8px 15px; border-radius: 50px; background: var(--glass-bg); }
+#music-toggle { background: transparent; border: none; color: var(--deep-crimson); font-weight: 600; font-size: 0.95rem; cursor: pointer; }
+
+/* Hero Section */
+.hero-section { text-align: center; margin-bottom: 5rem; padding-top: 3rem; }
+.hero-text { font-family: 'Dancing Script', cursive; font-size: clamp(4rem, 10vw, 6rem); color: var(--deep-crimson); margin-bottom: 1rem; text-shadow: 2px 2px 8px rgba(233, 30, 99, 0.3); }
+.hero-card {
+    display: inline-block; padding: 2.5rem 4rem;
+    background: linear-gradient(135deg, var(--glass-bg), rgba(255,240,245,0.85));
+}
+.hero-card h3 { margin: 0 0 1rem; color: var(--text-dark); letter-spacing: 1px; text-transform: uppercase; font-size: 1.1rem; }
+.counter-text { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: var(--primary-red); background: -webkit-linear-gradient(var(--primary-red), var(--deep-crimson)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.heart-divider { font-size: 1.5rem; margin-top: 1rem; color: var(--accent-gold); }
+
+/* Letter Section (Elegant Parchment Style) */
+.letter-block { margin-bottom: 4rem; }
+.letter-card {
+    padding: 4rem; position: relative;
+    background: linear-gradient(to bottom right, rgba(255,255,255,0.9), rgba(255,250,240,0.9));
+    border: 3px double var(--accent-gold);
+}
+.wax-seal { position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 3rem; filter: drop-shadow(0 4px 4px rgba(0,0,0,0.2)); }
+.letter-card h2 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--deep-crimson); text-align: center; margin-top: 1rem; }
+.letter-card p { font-family: 'Playfair Display', serif; font-size: 1.25rem; line-height: 1.9; color: #555; }
+.signature { text-align: right; font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--primary-red); margin-top: 2rem; }
+
+/* Timeline Section (Connecting Journey) */
+.timeline-block { margin-bottom: 4rem; }
+.timeline-container { position: relative; max-width: 800px; margin: 0 auto; padding: 2rem 0; }
+/* The central line */
+.timeline-container::after { content: ''; position: absolute; width: 4px; background: var(--accent-gold); top: 0; bottom: 0; left: 50%; margin-left: -2px; border-radius: 2px; box-shadow: 0 0 10px var(--accent-gold); z-index: 0; }
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    margin-bottom: 1.5rem;
+    z-index: 1;
+}
+.timeline-item.left { float: left; clear: both; padding-right: 50px; }
+.timeline-item.right { float: right; clear: both; padding-left: 50px; }
+.timeline-container { overflow: hidden; }
+/* The connecting dots */
+.timeline-item::after { content: '❤️'; position: absolute; top: 25px; right: -17px; font-size: 0.9rem; z-index: 10; color: var(--primary-red); background: #fff; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 8px var(--primary-red); border: 2px solid var(--accent-gold); }
+.timeline-item.right::after { left: -17px; right: auto; }
+.timeline-content { padding: 25px; border-radius: 20px; background: var(--glass-bg); position: relative; border: 1px solid var(--glass-border); text-align: left; }
+.date-badge { display: inline-block; padding: 5px 15px; background: var(--primary-red); color: white; border-radius: 50px; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3); }
+.timeline-content h4 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--deep-crimson); margin: 10px 0; }
+.timeline-content p { font-size: 1.05rem; color: #666; line-height: 1.6; }
+
+/* Memory Game Section */
+.game-block {
+    text-align: center;
+    margin-bottom: 4rem;
+    width: 100%;
+}
+
+.memory-game-container {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    min-width: 320px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 2px solid var(--glass-border);
+    border-radius: 30px;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.4s ease;
+}
+
+.memory-game-container:hover {
+    box-shadow: var(--glow-shadow), var(--card-shadow);
+}
+
+.memory-game {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    min-height: 280px;
+    margin: 0 auto;
+}
+
+@media (min-width: 520px) {
+    .memory-game { min-height: 320px; gap: 18px; }
+}
+
+.memory-card {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,240,245,0.6));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    border: 2px solid var(--glass-border);
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.08), 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.memory-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--soft-pink);
+    box-shadow: 0 10px 25px rgba(233, 30, 99, 0.25), var(--card-shadow);
+}
+
+.memory-card.flipped {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, #fff0f5, rgba(248, 187, 208, 0.4));
+    border-color: var(--primary-red);
+    box-shadow: 0 5px 20px rgba(233, 30, 99, 0.2);
+}
+
+/* Gallery Section (Polaroids) */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 2rem; }
+.polaroid { background: white; padding: 15px 15px 25px 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); transform: rotate(0deg); transition: all 0.4s ease; }
+.polaroid-frame { width: 100%; height: 280px; overflow: hidden; background: #f8f8f8; border: 1px solid #eee; }
+.polaroid img, .polaroid video { width: 100%; height: 100%; object-fit: cover; filter: sepia(0.1); transition: filter 0.3s; }
+.polaroid:hover img { filter: sepia(0); }
+.polaroid-caption { text-align: center; font-family: 'Dancing Script', cursive; font-size: 1.4rem; color: #555; margin-top: 15px; }
+.rotate-left { transform: rotate(-3deg); } .rotate-right { transform: rotate(3deg); }
+.rotate-left:hover, .rotate-right:hover { transform: rotate(0deg) scale(1.05) translateY(-10px); z-index: 10; }
+
+/* Final Message */
+.final-message { text-align: center; margin-top: 5rem; font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--text-dark); opacity: 0.8; }
+
+/* --- ANIMATIONS --- */
+.animate-in-down { animation: slideDown 1s ease-out forwards; }
+.animate-in { animation: fadeInUp 1.2s ease-out forwards; }
+.scroll-trigger { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+.scroll-trigger.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+/* --- PROPOSAL PAGE (index.html) STYLES --- */
+.proposal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.proposal-card {
+    padding: 3rem;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    /* Reusing your glow class for consistency */
+}
+
+.proposal-card h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: var(--deep-crimson);
+}
+
+/* Proposal hero: sparkling heart (replaces GIF, matches site style) */
+.gif-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gif-container.sparkle-hero {
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,240,245,0.85));
+    border: 2px solid var(--glass-border);
+    border-radius: 50%;
+    box-shadow: 0 8px 32px rgba(233, 30, 99, 0.2), inset 0 0 40px rgba(255,255,255,0.5);
+}
+
+.sparkle-hero .sparkle-heart {
+    font-size: 5rem;
+    filter: drop-shadow(0 0 12px var(--primary-red));
+    animation: heartPulse 1.8s ease-in-out infinite;
+}
+
+.sparkle-hero .sparkle {
+    position: absolute;
+    font-size: 1.25rem;
+    color: var(--accent-gold);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sparkle-hero .sparkle.s1 { top: 18%; left: 22%; animation: sparkle 2s ease-in-out 0.2s infinite; }
+.sparkle-hero .sparkle.s2 { top: 15%; right: 20%; animation: sparkle 2.2s ease-in-out 0.5s infinite; }
+.sparkle-hero .sparkle.s3 { bottom: 20%; right: 18%; animation: sparkle 2.1s ease-in-out 0.8s infinite; }
+.sparkle-hero .sparkle.s4 { bottom: 22%; left: 20%; animation: sparkle 1.9s ease-in-out 0.3s infinite; }
+.sparkle-hero .sparkle.s5 { top: 50%; left: 8%; animation: sparkle 2.3s ease-in-out 0.6s infinite; }
+.sparkle-hero .sparkle.s6 { top: 48%; right: 10%; animation: sparkle 2s ease-in-out 0.1s infinite; }
+
+@keyframes heartPulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 12px var(--primary-red)); }
+    50% { transform: scale(1.08); filter: drop-shadow(0 0 20px var(--primary-red)); }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0.6); }
+    50% { opacity: 0.9; transform: scale(1.2); }
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 2rem;
+    min-height: 80px;
+}
+
+#yes-btn, #no-btn {
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yes-btn {
+    background: var(--primary-red);
+    color: white;
+    z-index: 10;
+}
+
+#no-btn {
+    background: white;
+    color: #666;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+/* --- TIMELINE FIX (Prevent stretching) --- */
+.timeline-item::after {
+    content: '❤️';
+    position: absolute;
+    top: 25px;
+    right: -17px; /* Adjusted for fixed width */
+    font-size: 0.9rem;
+    z-index: 10;
+    color: var(--primary-red);
+    background: #fff;
+    border-radius: 50%;
+    
+    /* Fixed dimensions to prevent stretching */
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    box-shadow: 0 0 5px var(--primary-red);
+    border: 2px solid var(--accent-gold);
+}
+
+.timeline-item.right::after {
+    left: -17px;
+    right: auto;
+}
+
+/* --- MEMORY GAME IMPROVEMENTS --- */
+.memory-card {
+    aspect-ratio: 1;
+    background: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0; /* Hide icon initially */
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s;
+    border: 2px solid var(--glass-border);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.memory-card.flipped {
+    transform: rotateY(180deg);
+    font-size: 2.5rem; /* Reveal icon */
+    background: var(--soft-pink);
+    border-color: var(--primary-red);
+}
+
+/* Hidden Message Styling */
+#secret-message {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.8s ease-in-out;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+#secret-message.unlocked {
+    max-height: 500px;
+    opacity: 1;
+    padding: 2rem;
+}
+
+.secret-message-card .secret-message-inner {
+    background: linear-gradient(135deg, var(--glass-bg), var(--soft-pink));
+    border-radius: 20px;
+    padding: 2rem;
+    border: 2px solid var(--glass-border);
+    box-shadow: var(--glow-shadow);
+}
+.secret-message-card .secret-message-icon { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
+.secret-message-card h3 { font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--deep-crimson); margin: 0.5rem 0 1rem; }
+.secret-message-card p { font-size: 1.05rem; line-height: 1.7; color: var(--text-dark); margin: 0; }
+/* --- PROPOSAL PAGE ENHANCEMENTS --- */
+.proposal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.proposal-card {
+    padding: 3.5rem 2rem;
+    text-align: center;
+    max-width: 480px;
+    width: 90%;
+    /* Reusing the high-end glass styles */
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid var(--glass-border);
+}
+
+.proposal-card h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    color: var(--deep-crimson);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+/* --- TIMELINE FIX: NON-STRETCHING HEART --- */
+/*  */
+.timeline-item::after {
+    content: '❤️';
+    position: absolute;
+    top: 25px;
+    right: -17px; 
+    font-size: 0.9rem;
+    z-index: 10;
+    color: var(--primary-red);
+    background: #fff;
+    border-radius: 50%;
+    
+    /* Fixed Dimensions to prevent stretching */
+    width: 34px;
+    height: 34px;
+    display: flex; /* Centers the heart inside the circle */
+    align-items: center;
+    justify-content: center;
+    
+    box-shadow: 0 0 8px var(--primary-red);
+    border: 2px solid var(--accent-gold);
+}
+
+/* Ensure right-side items anchor the heart to the center line correctly */
+.timeline-item.right::after {
+    left: -17px;
+    right: auto;
+}
+
+/* --- MEMORY GAME REFINEMENT (card states) --- */
+.memory-card {
+    font-size: 0; /* Face-down: hide icon */
+}
+
+.memory-card.flipped {
+    font-size: 2.2rem; /* Face-up: show icon */
+}
+
+.memory-card.matched {
+    box-shadow: 0 0 18px var(--accent-gold), 0 5px 15px rgba(233, 30, 99, 0.15);
+    border-color: var(--accent-gold);
+    cursor: default;
+}

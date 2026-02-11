@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Forever Valentine ❤️</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body onload="initValentinePage()">
+    <div id="cursor-heart">❤️</div>
+    <div class="bokeh-bg"></div>
+    <audio id="bg-music" loop><source src="media/pocketful-of-sunshine.mp3" type="audio/mpeg"></audio>
+
+    <nav class="top-nav animate-in-down">
+        <div class="music-control glow-hover">
+            <button id="music-toggle">🎵 Play Our Song</button>
+        </div>
+    </nav>
+
+    <div class="main-page-wrapper">
+        <header class="hero-section animate-in">
+            <h1 class="hero-text">I Knew You'd Say Yes!</h1>
+            <div class="hero-card glow">
+                <h3>Every Second With You:</h3>
+                <div id="timer" class="counter-text">Calculating...</div>
+                <div class="heart-divider">Wait for it... ❤️</div>
+            </div>
+        </header>
+
+        <section class="content-block letter-block scroll-trigger">
+            <div class="letter-card glow">
+                <div class="wax-seal">❤️</div>
+                <h2>Greenlee,</h2>
+                <p>
+                    I adore you. Every second we're together and every second apart I constantly find you filling my thoughts. And I wouldn’t have it any other way. You make me so incredibly happy and each day I just feel lucky and excited that we get to go through life and make memories together. This last year has been incredible and its because you were in it. You are a partner, and a friend, and my favorite person. I hope I make you even a fraction of how happy you make me. I know I say I love you a lot so I’m going to try and get creative in how I say it. Here is a story I wrote for you: 
+                </p>
+                <p class="signature">Your favorite boyfriend, <br> Jake Fjelstul</p>
+            </div>
+        </section>
+
+        <section class="content-block timeline-block scroll-trigger">
+            <h2 class="section-title">Our Journey</h2>
+            <div class="timeline-container">
+                <div class="timeline-item left">
+                    <div class="timeline-content glow-hover">
+                        <div class="date-badge">Aug 15, 2025</div>
+                        <h4>Patch of Grass</h4>
+                        <p>A great pickup line...Almost as good as Helen Keller.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content glow-hover">
+                        <div class="date-badge">Mar 1, 2025</div>
+                        <h4>Glow Party / First Kiss</h4>
+                        <p>It was a good first kiss even if you don't remember</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content glow-hover">
+                        <div class="date-badge">Mar 14, 2024</div>
+                        <h4>First Date</h4>
+                        <p>Greatest first date ever! And yes it was a date.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content glow-hover">
+                        <div class="date-badge">May 1, 2025</div>
+                        <h4>Dating!!!</h4>
+                        <p>Hopefully this makes up for asking you to be my girlfriend in a parking lot...</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content glow-hover">
+                        <div class="date-badge">Jul 5, 2025</div>
+                        <h4>I Love YOU</h4>
+                        <p>Officially celebrating us. You're my favorite reason to celebrate.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content glow-hover">
+                        <div class="date-badge">Every Day</div>
+                        <h4>Still Choosing You</h4>
+                        <p>To many more firsts, and seconds, and everything with you.</p>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section class="content-block game-block scroll-trigger">
+            <h2 class="section-title">Unlock a Secret</h2>
+            <p class="subtitle">Find all the matching pairs of love to reveal a special message!</p>
+            <div class="memory-game-container glow">
+                <div class="memory-game" id="memory-game" role="grid" aria-label="Memory game: find matching pairs">
+                    <!-- Placeholder cards so the board is visible; script.js replaces with shuffled game on load -->
+                    <div class="memory-card glow" data-icon="❤️"></div>
+                    <div class="memory-card glow" data-icon="💖"></div>
+                    <div class="memory-card glow" data-icon="✨"></div>
+                    <div class="memory-card glow" data-icon="🌹"></div>
+                    <div class="memory-card glow" data-icon="💑"></div>
+                    <div class="memory-card glow" data-icon="💌"></div>
+                    <div class="memory-card glow" data-icon="❤️"></div>
+                    <div class="memory-card glow" data-icon="💖"></div>
+                    <div class="memory-card glow" data-icon="✨"></div>
+                    <div class="memory-card glow" data-icon="🌹"></div>
+                    <div class="memory-card glow" data-icon="💑"></div>
+                    <div class="memory-card glow" data-icon="💌"></div>
+                </div>
+            </div>
+            <div id="secret-message" class="secret-message-card glow" aria-hidden="true">
+                <div class="secret-message-inner">
+                    <span class="secret-message-icon">💌</span>
+                    <h3>You unlocked a Poem!</h3>
+                    <p>I love you more everyday In every simple kind of way. I love you here, I love you there I love your golden brown hair. I love the corners of your mouth And the way they form your smile. I hope you’ll be by my side And stay with me a while. I love you Greenlee!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-block gallery-block scroll-trigger">
+            <h2 class="section-title">Snapshot Memories</h2>
+            <div class="gallery-grid">
+                <div class="polaroid glow-hover rotate-left">
+                    <div class="polaroid-frame">
+                        <img src="media/img1.JPG" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">First Kiss @ Glow! 💋</div>
+                </div>
+                <div class="polaroid glow-hover">
+                    <div class="polaroid-frame">
+                            <img src="media/img2.jpeg" type="video/mp4">
+                    </div>
+                    <div class="polaroid-caption">Soccer Date ⚽️</div>
+                </div>
+                <div class="polaroid glow-hover rotate-right">
+                    <div class="polaroid-frame">
+                        <img src="media/img3.JPG" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Katy Perry (Mainframe) 🎤</div>
+                </div>
+                <!-- Row 2 -->
+                <div class="polaroid glow-hover rotate-left">
+                    <div class="polaroid-frame">
+                        <img src="media/img4.JPEG" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Delta Night ✈️</div>
+                </div>
+                <div class="polaroid glow-hover">
+                    <div class="polaroid-frame">
+                        <img src="media/img5.JPEG" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Dua Lipa 🌃</div>
+                </div>
+                <div class="polaroid glow-hover rotate-right">
+                    <div class="polaroid-frame">
+                        <img src="media/img6.JPEG" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Maroon Five (VIP) 🛋️</div>
+                </div>
+                <!-- Row 3 -->
+                <div class="polaroid glow-hover rotate-left">
+                    <div class="polaroid-frame">
+                        <img src="media/img7.JPG" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Nashville Party 🥂</div>
+                </div>
+                <div class="polaroid glow-hover">
+                    <div class="polaroid-frame">
+                        <img src="media/img8.JPG" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Broadway 🎸</div>
+                </div>
+                <div class="polaroid glow-hover rotate-right">
+                    <div class="polaroid-frame">
+                        <img src="media/img9.JPG" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Formal Dinner 🍽️</div>
+                </div>
+                <!-- Row 4 -->
+                <div class="polaroid glow-hover rotate-left">
+                    <div class="polaroid-frame">
+                        <img src="media/img10.JPEG" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Halloween 🎃</div>
+                </div>
+                <div class="polaroid glow-hover">
+                    <div class="polaroid-frame">
+                        <img src="media/img11.jpeg" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">High Museum 🖼️</div>
+                </div>
+                <div class="polaroid glow-hover rotate-right">
+                    <div class="polaroid-frame">
+                        <img src="media/img12.jpeg" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Arrived @ Charleston 🚗</div>
+                </div>
+                <!-- Row 5 -->
+                <div class="polaroid glow-hover rotate-left">
+                    <div class="polaroid-frame">
+                        <img src="media/img13.jpeg" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Rainbow Row Shopping Day 🛍️</div>
+                </div>
+                <div class="polaroid glow-hover">
+                    <div class="polaroid-frame">
+                        <img src="media/img14.jpeg" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Bike Ride 🚴</div>
+                </div>
+                <div class="polaroid glow-hover rotate-right">
+                    <div class="polaroid-frame">
+                        <img src="media/img15.JPG" alt="Us">
+                    </div>
+                    <div class="polaroid-caption">Love Better than the Notebook 📖</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="final-message scroll-trigger">
+            <p>Happy Valentine's Day, Greenlee. I love you MORE!🥂</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
