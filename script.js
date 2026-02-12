@@ -125,6 +125,10 @@ function initValentinePage() {
 // Scroll Animation Observer
 function setupScrollAnimation() {
     const triggers = document.querySelectorAll('.scroll-trigger');
+    if (!('IntersectionObserver' in window)) {
+        triggers.forEach(t => t.classList.add('visible'));
+        return;
+    }
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {

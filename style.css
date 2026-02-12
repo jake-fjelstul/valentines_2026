@@ -477,6 +477,10 @@ body {
 @media (max-width: 520px) {
     .main-page-wrapper { padding: 1rem; }
 
+    /* If mobile Safari scroll animations misbehave, don't hide sections */
+    .scroll-trigger { opacity: 1; transform: none; }
+    .scroll-trigger.visible { opacity: 1; transform: none; }
+
     .top-nav {
         top: calc(12px + env(safe-area-inset-top));
         right: calc(12px + env(safe-area-inset-right));
