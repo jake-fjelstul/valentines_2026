@@ -166,7 +166,7 @@ body {
     margin: 0 auto;
 }
 
-@media (min-width: 520px) {
+@media (min-width: 521px) {
     .memory-game { min-height: 320px; gap: 18px; }
 }
 
@@ -473,7 +473,8 @@ body {
 }
 
 /* --- iPhone / small-screen responsive fit --- */
-@media (max-width: 430px) {
+/* Treat any narrow window like iPhone */
+@media (max-width: 520px) {
     .main-page-wrapper { padding: 1rem; }
 
     .top-nav {
