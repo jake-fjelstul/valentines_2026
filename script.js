@@ -149,11 +149,12 @@ function updateCounter() {
     
     const t = document.getElementById('timer');
     if(t) {
-        // Animate the numbers changing slightly for a more dynamic feel
-        t.innerHTML = `<span style="display:inline-block; min-width: 3ch;">${d}</span>d 
-                       <span style="display:inline-block; min-width: 2ch;">${h.toString().padStart(2,'0')}</span>h 
-                       <span style="display:inline-block; min-width: 2ch;">${m.toString().padStart(2,'0')}</span>m 
-                       <span style="display:inline-block; min-width: 2ch;">${s.toString().padStart(2,'0')}</span>s`;
+        // Keep timer on one line (nbsp separators; CSS also enforces nowrap)
+        t.innerHTML =
+            `<span style="display:inline-block; min-width: 3ch;">${d}</span>d&nbsp;` +
+            `<span style="display:inline-block; min-width: 2ch;">${h.toString().padStart(2,'0')}</span>h&nbsp;` +
+            `<span style="display:inline-block; min-width: 2ch;">${m.toString().padStart(2,'0')}</span>m&nbsp;` +
+            `<span style="display:inline-block; min-width: 2ch;">${s.toString().padStart(2,'0')}</span>s`;
     }
 }
 

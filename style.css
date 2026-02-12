@@ -90,6 +90,7 @@ body {
 }
 .hero-card h3 { margin: 0 0 1rem; color: var(--text-dark); letter-spacing: 1px; text-transform: uppercase; font-size: 1.1rem; }
 .counter-text { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: var(--primary-red); background: -webkit-linear-gradient(var(--primary-red), var(--deep-crimson)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+#timer { white-space: nowrap; }
 .heart-divider { font-size: 1.5rem; margin-top: 1rem; color: var(--accent-gold); }
 
 /* Letter Section (Elegant Parchment Style) */
@@ -470,3 +471,73 @@ body {
     border-color: var(--accent-gold);
     cursor: default;
 }
+
+/* --- iPhone / small-screen responsive fit --- */
+@media (max-width: 430px) {
+    .main-page-wrapper { padding: 1rem; }
+
+    .top-nav {
+        top: calc(12px + env(safe-area-inset-top));
+        right: calc(12px + env(safe-area-inset-right));
+    }
+
+    .section-title {
+        font-size: clamp(2.6rem, 10vw, 3.4rem);
+        margin: 2.5rem 0 0.75rem;
+    }
+
+    .hero-text { font-size: clamp(3rem, 11vw, 4.25rem); }
+    .hero-card { padding: 1.5rem 1.25rem; width: 100%; max-width: 520px; }
+    .counter-text { font-size: clamp(1.65rem, 6.2vw, 2.2rem); }
+    #timer { white-space: nowrap; }
+
+    .letter-card { padding: 2rem 1.5rem; }
+    .letter-card p { font-size: 1.08rem; }
+
+    /* Timeline: single column on small screens */
+    .timeline-container { padding: 1rem 0; }
+    .timeline-container::after { left: 22px; margin-left: 0; }
+    .timeline-item {
+        width: 100%;
+        float: none;
+        clear: both;
+        padding: 10px 10px 10px 60px;
+        margin-bottom: 1rem;
+    }
+    /* Override desktop zig-zag floats */
+    .timeline-item.left, .timeline-item.right { float: none; clear: both; padding-left: 60px; padding-right: 10px; }
+    .timeline-item::after { left: 5px; right: auto; }
+    .timeline-item.right::after { left: 5px; right: auto; }
+    /* Keep timeline cards from stretching too wide on iPhone */
+    .timeline-content { width: min(320px, 100%); max-width: 320px; }
+
+    /* Memory game: larger cards + 3 columns */
+    .memory-game-container { padding: 1.5rem; max-width: 100%; min-width: 0; border-radius: 24px; }
+    .memory-game { grid-template-columns: repeat(3, 1fr); gap: 12px; min-height: auto; margin: 1.25rem auto; }
+    .memory-card { border-radius: 16px; }
+
+    /* Gallery: one column polaroids */
+    .gallery-grid { grid-template-columns: 1fr; gap: 22px; }
+    .polaroid-frame { height: 240px; }
+}
+
+/* --- Proposal page centering (index.html) --- */
+/* iOS Safari can mis-measure 100vh; use modern viewport units */
+.proposal-body {
+    min-height: 100svh;
+    min-height: 100dvh;
+    height: auto;
+    padding: calc(16px + env(safe-area-inset-top))
+             calc(16px + env(safe-area-inset-right))
+             calc(16px + env(safe-area-inset-bottom))
+             calc(16px + env(safe-area-inset-left));
+}
+
+#proposal-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.proposal-card { margin: 0 auto; }
